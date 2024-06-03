@@ -8,11 +8,17 @@
   </head>
   <body>
     <div id="navbar-container" class="bg-primary mb-5">
-    <div id="logo">The Tech Blog</div>
+      <div id="logo">The Tech Blog</div>
       <nav id="navbar">
-        <a href="">Home</a>
-        <a href="">Dashboard</a>
-        <a href="">Logout</a>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/login" id="loginBtn">
+          {{#if loggedIn}}
+            Logout
+          {{else}}
+            Login
+          {{/if}}
+        </a>
       </nav>
     </div>
 
