@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Work is Dumb",
+    "body": "Honestly self explanitory",
+    "user_id": 2
+  },
+  {
+    "title": "To SQL or to NO(t)-SQL",
+    "body": "I like relations",
+    "user_id": 1
+  },
+  {
+    "title": "Title",
+    "body": "Body",
+    "user_id": 3
+  }
+]
