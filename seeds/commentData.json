@@ -13,5 +13,10 @@
     "post_id": 3,
     "body": "Yeah, fuck work",
     "user_id": 3
+  },
+  {
+    "post_id": 3,
+    "body": "Yeah, fuck working",
+    "user_id": 1
   }
 ]

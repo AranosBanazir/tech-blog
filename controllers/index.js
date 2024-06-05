@@ -1,17 +1,10 @@
 const router = require("express").Router();
 const apiRoutes = require("./api");
 const login = require("./login");
+const viewRoutes = require("./view-routes");
 
 router.use("/login", login);
 router.use("/api", apiRoutes);
-
-router.get("/", async (req, res) => {
-  if (!req.session.loggedIn){
-    req.session.loggedIn = false
-  }
-  res.render("home", {
-    loggedIn: req.session.loggedIn,
-  });
-});
+router.use("/", viewRoutes);
 
 module.exports = router;
