@@ -9,4 +9,13 @@ router.get("/", async (req, res) => {
   });
 });
 
+//login page
+router.get("/login", async (req, res) => {
+  res.render("sign-in");
+});
+
+//dashboard page
+
+//create post page
+
 module.exports = router;

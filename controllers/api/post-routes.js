@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
   const posts = rawPosts.map((post) => post.get({ plain: true }));
   console.log(posts);
   // res.render("home", {});5
-  //   res.send(rawPosts);
+    res.send(posts);
 });
 
 module.exports = router;
