@@ -16,9 +16,9 @@ app.set("views", "./views");
 
 app.use(
   session({
-    secret: "supersecret", //fix later for .env
+    secret: "supersecret", //TODO fix later for .env
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {},
     store: new SequelizeStore({
       db: sequelize,

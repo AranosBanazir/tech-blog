@@ -26,11 +26,13 @@ router.post("/login", async (req, res) => {
       res.status(400).json({ message: "Invalid Password" });
       return;
     }
-    console.log(userData);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      console.log(req.session, "before");
       req.session.loggedIn = true;
+      console.log(req.session, "after");
+      console.log("setting TRUE here too");
     });
     res.status(200).json({
       message: "You have been logged in successfully",
@@ -40,11 +42,13 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/logout", async (req, res) => {
+router.get("/logout", async (req, res) => {
   try {
-    req.session.destroy();
-    res.status(200).json({
-      message: "You have been logged out successfully",
+    req.sessionStore.destroy(req.sessionID, (err) => {
+      err ? console.log(err) : console.log("session destroyed");
+    });
+    req.session.destroy(() => {
+      res.status(204).end();
     });
   } catch (err) {
     res.status(400).json(err);
@@ -67,6 +71,7 @@ router.post("/signup", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = user.id;
       req.session.loggedIn = true;
+      console.log("setting TRUE here");
       res.status(201).json({
         message: "You have been signed up successfully",
       });
