@@ -1,3 +1,8 @@
-<h2>{{loggedIn}}</h2>
+<div class="container">
+    {{#each cleanedPosts}}
 
+    {{> post-card}}
+
+    {{/each}}
+</div>
 <script src="./js/home-page.js"></script>

@@ -6,11 +6,14 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const session = require("express-session");
-const { engine } = require("express-handlebars");
+const { create } = require("express-handlebars");
+const helpers = require("./utils/helpers");
 const routes = require(`./controllers`);
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-app.engine("handlebars", engine());
+const hbs = create({ helpers });
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 

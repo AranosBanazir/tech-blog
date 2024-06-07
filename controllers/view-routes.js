@@ -1,15 +1,21 @@
 const router = require("express").Router();
 const auth = require("../utils/middleware/auth");
+const { Post, User, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
-  console.log(req.session, "first entry");
   if (!req.session.loggedIn) {
     req.session.loggedIn = false;
-    console.log("setting FALSE here");
   }
-  console.log(req.session, "in HOME view");
+
+  const posts = await Post.findAll({
+    include: [{ model: User, attributes: ["username"] }, { model: Comment }],
+  });
+
+  const cleanedPosts = posts.map((post) => post.get({ plain: true }));
+  console.log(cleanedPosts);
   res.render("home", {
     loggedIn: req.session.loggedIn,
+    cleanedPosts,
   });
 });
 
@@ -19,10 +25,18 @@ router.get("/login", async (req, res) => {
 });
 
 //dashboard page
-router.get("/dashboard", (req, res) => {
-  console.log(req.session, "in /dashboard");
+router.get("/dashboard", auth, async (req, res) => {
+  const posts = await Post.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+  });
+
+  const cleanedPosts = posts.map((post) => post.get({ plain: true }));
+
   res.render("dashboard", {
     loggedIn: req.session.loggedIn,
+    cleanedPosts,
   });
 });
 
