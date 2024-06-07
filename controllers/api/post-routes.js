@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { raw } = require("express");
 const { Post, User, Comment } = require("../../models");
 
 // route from: /api/posts

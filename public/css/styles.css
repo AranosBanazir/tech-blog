@@ -4,39 +4,6 @@
   --text-primary: rgb(79, 179, 179);
 }
 
-html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  height: inherit;
-  width: inherit;
-  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
-  font-size: 16px;
-  background-color: darkslategray;
-}
-
-#navbar-container {
-  background-color: var(--bg-secondary);
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#navbar a {
-  color: var(--text-primary);
-  margin: 0px 10px 0px 5px;
-  font-size: 120%;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#logo {
-  background-color: aquamarine;
-  font-size: 150%;
-  font-weight: bolder;
-  padding: 30px;
-  border-radius: 20px;
+.p-\[50\] {
+  padding: 50px;
 }

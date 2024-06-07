@@ -1,20 +1,14 @@
 [
   {
-    "firstName": "Caleb",
-    "lastName": "Saiia",
-    "email": "123@456.com",
+    "username": "Caleb",
     "password": "asdfjfdsa"
   },
   {
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "JD@gmail.com",
+    "username": "John",
     "password": "asdfasdfasdf"
   },
   {
-    "firstName": "Jane",
-    "lastName": "Smith",
-    "email": "JS@email.com",
+    "username": "Joe",
     "password": "qwdvbqwd"
   }
 ]
