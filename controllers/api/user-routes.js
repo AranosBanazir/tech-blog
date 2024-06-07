@@ -27,13 +27,8 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      console.log(req.session, "before");
-      req.session.loggedIn = true;
-      console.log(req.session, "after");
-      console.log("setting TRUE here too");
-    });
+    req.session.loggedIn = true;
+    req.session.user_id = userData.id;
     res.status(200).json({
       message: "You have been logged in successfully",
     });
@@ -44,11 +39,8 @@ router.post("/login", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   try {
-    req.sessionStore.destroy(req.sessionID, (err) => {
-      err ? console.log(err) : console.log("session destroyed");
-    });
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).redirect("/");
     });
   } catch (err) {
     res.status(400).json(err);
@@ -68,14 +60,8 @@ router.post("/signup", async (req, res) => {
 
     const user = await User.create(req.body);
 
-    req.session.save(() => {
-      req.session.user_id = user.id;
-      req.session.loggedIn = true;
-      console.log("setting TRUE here");
-      res.status(201).json({
-        message: "You have been signed up successfully",
-      });
-    });
+    req.session.user_id = user.id;
+    req.session.loggedIn = true;
   } catch (err) {
     res.status(400).json(err);
   }

@@ -18,7 +18,7 @@ app.use(
   session({
     secret: "supersecret", //TODO fix later for .env
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {},
     store: new SequelizeStore({
       db: sequelize,
