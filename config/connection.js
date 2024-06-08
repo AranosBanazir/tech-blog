@@ -6,11 +6,12 @@ let sequelize;
 if (process.env.DBURL) {
   sequelize = new Sequelize(process.env.DBURL, {
     dialect: "postgres",
-    dialectOptions:{
-      ssl:{
+    dialectOptions: {
+      ssl: {
         require: false,
-      }
-    }
+        rejectUnauthorized: false,
+      },
+    },
   });
   console.log("here", process.env.DBURL);
 } else {
