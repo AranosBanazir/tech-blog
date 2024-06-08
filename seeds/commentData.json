@@ -1,22 +1,12 @@
 [
   {
     "post_id": 1,
-    "body": "Yeah, fuck work",
+    "body": "Yeah! I don't think he is actually real",
     "user_id": 1
   },
   {
     "post_id": 2,
-    "body": "Yeah, fuck work",
-    "user_id": 1
-  },
-  {
-    "post_id": 3,
-    "body": "Yeah, fuck work",
-    "user_id": 3
-  },
-  {
-    "post_id": 3,
-    "body": "Yeah, fuck working",
-    "user_id": 1
+    "body": "I think you will have a good time learning about NoSQL databases! Trust me, I am Morgan Freeman.",
+    "user_id": 2
   }
 ]

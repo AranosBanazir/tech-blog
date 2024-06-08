@@ -46,7 +46,10 @@ router.get("/post/:id", auth, async (req, res) => {
   let post = await Post.findByPk(req.params.id, {
     include: [
       { model: User, attributes: ["username"] },
-      { model: Comment, include: [{ model: User, attributes: ["username"] }] },
+      {
+        model: Comment,
+        include: [{ model: User, attributes: ["username"] }],
+      },
     ],
   });
 
@@ -57,7 +60,5 @@ router.get("/post/:id", auth, async (req, res) => {
     post,
   });
 });
-
-
 
 module.exports = router;

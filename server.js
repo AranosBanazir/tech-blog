@@ -19,7 +19,7 @@ app.set("views", "./views");
 
 app.use(
   session({
-    secret: "supersecret", //TODO fix later for .env
+    secret: process.env.DB_SESSION_SECRET, 
     resave: false,
     saveUninitialized: true,
     cookie: {},
@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
-    console.clear();
+    // console.clear();
     console.log(`Listening on port: ${PORT}`);
   });
 });

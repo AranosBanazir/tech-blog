@@ -4,7 +4,7 @@ const auth = require("../../utils/middleware/auth");
 // route from: /api/posts
 
 router.get("/", async (req, res) => {
-  //TODO: Query all posts
+  
   const rawPosts = await Post.findAll({
     attributes: ["title", "body", ["id", "postID"]],
     include: [
@@ -22,7 +22,6 @@ router.get("/", async (req, res) => {
   res.send(posts);
 });
 
-//TODO Move to view routes
 
 router.get("/:id", auth, async (req, res) => {
   let post = await Post.findByPk(req.params.id, {

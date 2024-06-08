@@ -1,22 +1,20 @@
-
-  <div class="card mt-5">
-    <div class="card-header">
-      <p>
-        <a href="/post/{{id}}" class="text-decoration-none"><strong
-          >{{post.title}}</strong></a>
-        posted by
-        {{post.user.username}}
-        on
-        {{formatDate post.createdAt}}</p>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        {{post.body}}
-      </p>
-    </div>
-
+<div class="card mt-5">
+  <div class="card-header d-flex flex-row">
+    <p class="w-75">
+      <a href="/post/{{id}}" class="text-decoration-none">
+        <strong>{{title}}</strong></a>
+    </p>
+    <p>posted by
+      {{user.username}}
+      on
+      {{formatDate createdAt}}</p>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      {{body}}
+    </p>
   </div>
 
+</div>
 
-
-  <script src="/js/single-post.js"></script>
+<script src="/js/single-post.js"></script>
