@@ -4,8 +4,17 @@ require("dotenv").config();
 let sequelize;
 
 if (process.env.DBURL) {
-  sequelize = new Sequelize(process.env.DBURL);
+  sequelize = new Sequelize(process.env.DBURL, {
+    dialect: "postgres",
+    dialectOptions:{
+      ssl:{
+        require: false,
+      }
+    }
+  });
+  console.log("here", process.env.DBURL);
 } else {
+  console.log("there");
   sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
