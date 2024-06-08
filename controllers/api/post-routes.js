@@ -22,6 +22,8 @@ router.get("/", async (req, res) => {
   res.send(posts);
 });
 
+//TODO Move to view routes
+
 router.get("/:id", auth, async (req, res) => {
   let post = await Post.findByPk(req.params.id, {
     include: [
@@ -30,13 +32,21 @@ router.get("/:id", auth, async (req, res) => {
     ],
   });
 
-  post = post.get({ plain: true });
+  // post = post.get({ plain: true });
 
-  console.log(post);
-  res.render("single-post", {
-    loggedIn: req.session.loggedIn,
-    post,
-  });
+  res.status(200).json(post);
+});
+
+router.post("/", auth, async (req, res) => {
+  const newPost = {
+    user_id: req.session.user_id,
+    ...req.body,
+  };
+
+  console.log(newPost);
+  const post = await Post.create(newPost);
+
+  res.status(201).end();
 });
 
 module.exports = router;

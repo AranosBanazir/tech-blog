@@ -42,4 +42,22 @@ router.get("/dashboard", auth, async (req, res) => {
 
 //create post page
 
+router.get("/post/:id", auth, async (req, res) => {
+  let post = await Post.findByPk(req.params.id, {
+    include: [
+      { model: User, attributes: ["username"] },
+      { model: Comment, include: [{ model: User, attributes: ["username"] }] },
+    ],
+  });
+
+  post = post.get({ plain: true });
+
+  res.render("single-post", {
+    loggedIn: req.session.loggedIn,
+    post,
+  });
+});
+
+
+
 module.exports = router;
